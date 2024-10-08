@@ -46,7 +46,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo/Image Section */}
         <div className="flex items-center">
-          <h1 className={`text-2xl font-bold cursor-pointer ${isScrolled ? 'text-white' : 'text-gray-600'}`} onClick={() => router.push('/')}>
+          <h1 className={`text-2xl font-bold cursor-pointer ${isScrolled ? 'text-white' : 'text-orange-400'}`} onClick={() => router.push('/')}>
             FoodMood
           </h1>
         </div>

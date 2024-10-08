@@ -1,11 +1,11 @@
-"use client";
-
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { BackgroundGradient } from "./ui/background-gradient";
 import { useRouter } from "next/navigation";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AreaFood = ({ cuisine }) => {
   const [bestFoods, setBestFoods] = useState([]);
@@ -15,26 +15,21 @@ const AreaFood = ({ cuisine }) => {
   const triggerRef = useRef(null);
   const router = useRouter();
 
-  gsap.registerPlugin(ScrollTrigger);
-
   useEffect(() => {
     const fetchBestFoods = async () => {
-      const foodData = [];
-      if (!cuisine) return;
-
       try {
         const res = await fetch(`/api/bestFoods?cuisine=${cuisine}`);
         if (!res.ok) throw new Error(`Failed to fetch foods for ${cuisine}`);
         const data = await res.json();
-        foodData.push( data);
+        setBestFoods(data);
       } catch (error) {
-        console.error("Error fetching best foods:", error);
         setError(error.message);
+        console.error("Error fetching best foods:", error); // More explicit logging
       } finally {
-        setBestFoods(foodData);
         setLoading(false);
       }
     };
+    
 
     fetchBestFoods();
 
@@ -61,7 +56,7 @@ const AreaFood = ({ cuisine }) => {
 
       return () => {
         pin.kill();
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
     }
   }, [cuisine]);
@@ -86,7 +81,7 @@ const AreaFood = ({ cuisine }) => {
         >
           {loading ? (
             <div className="flex justify-center items-center h-full">
-              <p className="text-lg">Loading </p>
+              <p className="text-lg">Loading...</p>
             </div>
           ) : error ? (
             <div className="flex justify-center items-center h-full">
@@ -103,7 +98,7 @@ const AreaFood = ({ cuisine }) => {
                   className="block w-full h-full cursor-pointer group transition-transform duration-500 ease-in-out"
                   role="button"
                   tabIndex={0}
-                  onKeyPress={(e) => e.key === 'Enter' && handleMealClick(food.idMeal)}
+                  onKeyPress={(e) => e.key === "Enter" && handleMealClick(food.idMeal)}
                 >
                   <BackgroundGradient className="absolute inset-0 z-10 flex flex-col items-center justify-center h-full w-full">
                     <h3 className="text-xl font-semibold mt-32 text-center text-white bg-black bg-opacity-50 p-4 rounded-lg transition duration-300 ease-in-out group-hover:text-yellow-400">

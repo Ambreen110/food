@@ -10,7 +10,7 @@ const RecipeCard = ({ recipe }) => {
     strMeal,
     strMealThumb,
     strInstructions,
-     ingredients
+    ...ingredients
   } = recipe;
 
   // Prepare the ingredients list
