@@ -42,7 +42,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 ${isScrolled ? 'bg-gray-700 shadow-md' : 'bg-transparent'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 ${isScrolled ? ' shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo/Image Section */}
         <div className="flex items-center">
@@ -84,7 +84,7 @@ const Navbar = () => {
               Mood
             </button>
             {isMoodOpen && (
-              <div className="absolute flex flex-col bg-gray-800 rounded-md shadow-lg mt-2 py-2 right-0">
+              <div className="absolute flex flex-col  rounded-md shadow-lg mt-2 py-2 right-0">
                 {moods.map((mood) => (
                   <button
                     key={mood.name}
@@ -111,7 +111,7 @@ const Navbar = () => {
               Cuisine
             </button>
             {isCuisineOpen && (
-              <div className="absolute flex flex-col bg-gray-800 rounded-md shadow-lg mt-2 py-2 right-0">
+              <div className="absolute flex flex-col  rounded-md shadow-lg mt-2 py-2 right-0">
                 {cuisines.map((cuisine) => (
                   <button 
                     key={cuisine}

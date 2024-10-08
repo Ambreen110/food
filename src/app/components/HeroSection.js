@@ -70,7 +70,7 @@ const HeroSection = () => {
             <button
               key={mood.name}
               onClick={() => handleMoodClick(mood)}
-              className="px-8 py-3 rounded-full text-lg font-semibold bg-[#E97415] text-white hover:bg-orange-300 transition transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="px-8 py-3 rounded-full text-lg font-semibold bg-[#00ABFE] text-white hover:bg-[#E97415] transition transform hover:scale-105 shadow-lg hover:shadow-xl"
               aria-label={`Select ${mood.name} mood`}
             >
               {mood.name}
